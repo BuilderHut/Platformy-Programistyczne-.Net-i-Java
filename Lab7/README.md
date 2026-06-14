@@ -14,6 +14,12 @@ Szczegółowy opis, wymagania i komendy uruchomieniowe są dostępne w pliku:
 car-rental-app/README.md
 ```
 
+Zrzuty ekranu dokumentujące wykonanie laboratorium znajdują się w katalogu:
+
+```text
+screenshots/
+```
+
 ## Skrót
 
 - generator: JHipster 9.1.0,

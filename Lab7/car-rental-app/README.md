@@ -11,6 +11,12 @@ W projekcie zostały wykonane:
 
 Zadanie 3, czyli architektura mikroserwisowa uruchamiana w Dockerze, nie jest częścią tego projektu.
 
+Zrzuty ekranu dokumentujące uruchomienie aplikacji, panel administracyjny i wykonanie zadań znajdują się w katalogu:
+
+```text
+../screenshots/
+```
+
 ## Opis aplikacji
 
 Aplikacja **Car Rental App** jest prostym systemem do obsługi wypożyczalni samochodów. Projekt pozwala zarządzać klientami, prawami jazdy, samochodami, wypożyczeniami oraz kategoriami pojazdów.
