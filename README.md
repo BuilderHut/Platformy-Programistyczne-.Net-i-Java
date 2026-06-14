@@ -8,8 +8,8 @@ Każde laboratorium ma własny opis w pliku `README.md`.
 
 | Laboratorium | Temat |
 | --- | --- |
-| `Lab1` | FizzBuzz w C# |
-| `Lab2` | Problem plecakowy w C#, GUI Windows Forms i testy |
+| `Lab0` | FizzBuzz w C# |
+| `Lab1` | Problem plecakowy w C#, GUI Windows Forms i testy |
 | `Lab3` | Równoległe mnożenie macierzy w C# |
 | `Lab4` | Blazor Server i ML.NET |
 | `Lab5` | Problem plecakowy w Javie |
