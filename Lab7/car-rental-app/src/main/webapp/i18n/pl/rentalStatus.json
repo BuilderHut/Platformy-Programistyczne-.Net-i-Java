@@ -1,0 +1,11 @@
+{
+  "carrentalApp": {
+    "RentalStatus": {
+      "null": "",
+      "PLANNED": "PLANNED",
+      "ACTIVE": "ACTIVE",
+      "FINISHED": "FINISHED",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

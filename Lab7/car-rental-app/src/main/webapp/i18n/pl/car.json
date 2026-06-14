@@ -1,0 +1,30 @@
+{
+  "carrentalApp": {
+    "car": {
+      "home": {
+        "title": "Car",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Car",
+        "createOrEditLabel": "Dodaj lub edytuj: Car",
+        "search": "Szukaj Car",
+        "notFound": "No Cars found"
+      },
+      "created": "Utworzono nowy obiekt typu Car z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Car z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Car z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Car {{ id }}?"
+      },
+      "detail": {
+        "title": "Car"
+      },
+      "id": "ID",
+      "brand": "Brand",
+      "model": "Model",
+      "productionYear": "Production Year",
+      "dailyPrice": "Daily Price",
+      "status": "Status",
+      "categories": "Categories"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@if (drivingLicense) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(drivingLicense.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="drivingLicenseDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error />
+      <p
+        id="jhi-delete-drivingLicense-heading"
+        jhiTranslate="carrentalApp.drivingLicense.delete.question"
+        [translateValues]="{ id: drivingLicense.id }"
+      >
+        Are you sure you want to delete Driving License {{ drivingLicense.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-drivingLicense" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times" />&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

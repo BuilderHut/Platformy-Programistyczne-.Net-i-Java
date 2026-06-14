@@ -1,0 +1,28 @@
+{
+  "carrentalApp": {
+    "drivingLicense": {
+      "home": {
+        "title": "Driving Licenses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Driving License",
+        "createOrEditLabel": "Create or edit a Driving License",
+        "search": "Search for Driving License",
+        "notFound": "No Driving Licenses found"
+      },
+      "created": "A new Driving License is created with identifier {{ param }}",
+      "updated": "A Driving License is updated with identifier {{ param }}",
+      "deleted": "A Driving License is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Driving License {{ id }}?"
+      },
+      "detail": {
+        "title": "Driving License"
+      },
+      "id": "ID",
+      "licenseNumber": "License Number",
+      "issueDate": "Issue Date",
+      "expirationDate": "Expiration Date",
+      "customer": "Customer"
+    }
+  }
+}

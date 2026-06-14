@@ -1,0 +1,28 @@
+{
+  "carrentalApp": {
+    "drivingLicense": {
+      "home": {
+        "title": "Driving License",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Driving License",
+        "createOrEditLabel": "Dodaj lub edytuj: Driving License",
+        "search": "Szukaj Driving License",
+        "notFound": "No Driving Licenses found"
+      },
+      "created": "Utworzono nowy obiekt typu Driving License z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Driving License z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Driving License z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Driving License {{ id }}?"
+      },
+      "detail": {
+        "title": "Driving License"
+      },
+      "id": "ID",
+      "licenseNumber": "License Number",
+      "issueDate": "Issue Date",
+      "expirationDate": "Expiration Date",
+      "customer": "Customer"
+    }
+  }
+}

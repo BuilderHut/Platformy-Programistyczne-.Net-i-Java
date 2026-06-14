@@ -1,0 +1,114 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-driving-license-heading"
+        data-cy="DrivingLicenseCreateUpdateHeading"
+        jhiTranslate="carrentalApp.drivingLicense.home.createOrEditLabel"
+      >
+        Create or edit a Driving License
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let licenseNumberRef = editForm.get('licenseNumber')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_licenseNumber" jhiTranslate="carrentalApp.drivingLicense.licenseNumber"
+            >License Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="licenseNumber"
+            id="field_licenseNumber"
+            data-cy="licenseNumber"
+            formControlName="licenseNumber"
+          />
+          @if (licenseNumberRef.invalid && (licenseNumberRef.dirty || licenseNumberRef.touched)) {
+            <div>
+              @if (editForm.get('licenseNumber')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let issueDateRef = editForm.get('issueDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_issueDate" jhiTranslate="carrentalApp.drivingLicense.issueDate">Issue Date</label>
+          <div class="input-group">
+            <input
+              id="field_issueDate"
+              data-cy="issueDate"
+              type="text"
+              class="form-control"
+              name="issueDate"
+              ngbDatepicker
+              #issueDateDp="ngbDatepicker"
+              formControlName="issueDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="issueDateDp.toggle()"><fa-icon icon="calendar-alt" /></button>
+          </div>
+          @if (issueDateRef.invalid && (issueDateRef.dirty || issueDateRef.touched)) {
+            <div>
+              @if (editForm.get('issueDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let expirationDateRef = editForm.get('expirationDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_expirationDate" jhiTranslate="carrentalApp.drivingLicense.expirationDate"
+            >Expiration Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_expirationDate"
+              data-cy="expirationDate"
+              type="text"
+              class="form-control"
+              name="expirationDate"
+              ngbDatepicker
+              #expirationDateDp="ngbDatepicker"
+              formControlName="expirationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="expirationDateDp.toggle()"><fa-icon icon="calendar-alt" /></button>
+          </div>
+          @if (expirationDateRef.invalid && (expirationDateRef.dirty || expirationDateRef.touched)) {
+            <div>
+              @if (editForm.get('expirationDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving()"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (rental(); as rentalRef) {
+      <div>
+        <h2 data-cy="rentalDetailsHeading"><span jhiTranslate="carrentalApp.rental.detail.title">Rental</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ rentalRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.rental.startDate">Start Date</span></dt>
+          <dd>
+            <span>{{ rentalRef.startDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.rental.endDate">End Date</span></dt>
+          <dd>
+            <span>{{ rentalRef.endDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.rental.totalPrice">Total Price</span></dt>
+          <dd>
+            <span>{{ rentalRef.totalPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.rental.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'carrentalApp.RentalStatus.' + (rentalRef.status ?? 'null')">{{
+              { null: '', PLANNED: 'PLANNED', ACTIVE: 'ACTIVE', FINISHED: 'FINISHED', CANCELLED: 'CANCELLED' }[rentalRef.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.rental.car">Car</span></dt>
+          <dd>
+            @if (rental()!.car) {
+              <div>
+                <a [routerLink]="['/car', rental()!.car?.id, 'view']">{{ rentalRef.car?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.rental.customer">Customer</span></dt>
+          <dd>
+            @if (rental()!.customer) {
+              <div>
+                <a [routerLink]="['/customer', rental()!.customer?.id, 'view']">{{ rentalRef.customer?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/rental', rentalRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

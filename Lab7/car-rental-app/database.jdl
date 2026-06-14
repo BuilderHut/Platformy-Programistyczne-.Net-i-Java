@@ -1,0 +1,66 @@
+enum CarStatus {
+  AVAILABLE,
+  RENTED,
+  SERVICE
+}
+
+enum RentalStatus {
+  PLANNED,
+  ACTIVE,
+  FINISHED,
+  CANCELLED
+}
+
+entity Customer {
+  firstName String required
+  lastName String required
+  email String required unique
+  phone String
+}
+
+entity DrivingLicense {
+  licenseNumber String required unique
+  issueDate LocalDate required
+  expirationDate LocalDate required
+}
+
+entity Car {
+  brand String required
+  model String required
+  productionYear Integer required min(1990)
+  dailyPrice Float required min(0)
+  status CarStatus required
+}
+
+entity Rental {
+  startDate LocalDate required
+  endDate LocalDate required
+  totalPrice Float min(0)
+  status RentalStatus required
+}
+
+entity Category {
+  name String required unique
+  description String
+}
+
+relationship OneToOne {
+  Customer{drivingLicense(licenseNumber)} to DrivingLicense{customer}
+}
+
+relationship OneToMany {
+  Customer{rentals} to Rental{customer required}
+}
+
+relationship ManyToOne {
+  Rental{car required} to Car
+}
+
+relationship ManyToMany {
+  Car{categories(name)} to Category{cars}
+}
+
+paginate * with pagination
+service * with serviceClass
+dto * with mapstruct
+search * with elasticsearch

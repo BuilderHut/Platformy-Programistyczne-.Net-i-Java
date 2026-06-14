@@ -1,0 +1,10 @@
+{
+  "carrentalApp": {
+    "CarStatus": {
+      "null": "",
+      "AVAILABLE": "AVAILABLE",
+      "RENTED": "RENTED",
+      "SERVICE": "SERVICE"
+    }
+  }
+}

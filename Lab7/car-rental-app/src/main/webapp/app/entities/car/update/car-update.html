@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-car-heading" data-cy="CarCreateUpdateHeading" jhiTranslate="carrentalApp.car.home.createOrEditLabel">
+        Create or edit a Car
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let brandRef = editForm.get('brand')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_brand" jhiTranslate="carrentalApp.car.brand">Brand</label>
+          <input type="text" class="form-control" name="brand" id="field_brand" data-cy="brand" formControlName="brand" />
+          @if (brandRef.invalid && (brandRef.dirty || brandRef.touched)) {
+            <div>
+              @if (editForm.get('brand')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let modelRef = editForm.get('model')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_model" jhiTranslate="carrentalApp.car.model">Model</label>
+          <input type="text" class="form-control" name="model" id="field_model" data-cy="model" formControlName="model" />
+          @if (modelRef.invalid && (modelRef.dirty || modelRef.touched)) {
+            <div>
+              @if (editForm.get('model')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let productionYearRef = editForm.get('productionYear')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_productionYear" jhiTranslate="carrentalApp.car.productionYear">Production Year</label>
+          <input
+            type="number"
+            class="form-control"
+            name="productionYear"
+            id="field_productionYear"
+            data-cy="productionYear"
+            formControlName="productionYear"
+          />
+          @if (productionYearRef.invalid && (productionYearRef.dirty || productionYearRef.touched)) {
+            <div>
+              @if (editForm.get('productionYear')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('productionYear')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1990' }"
+                  >This field should be at least 1990.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('productionYear')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let dailyPriceRef = editForm.get('dailyPrice')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dailyPrice" jhiTranslate="carrentalApp.car.dailyPrice">Daily Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="dailyPrice"
+            id="field_dailyPrice"
+            data-cy="dailyPrice"
+            formControlName="dailyPrice"
+          />
+          @if (dailyPriceRef.invalid && (dailyPriceRef.dirty || dailyPriceRef.touched)) {
+            <div>
+              @if (editForm.get('dailyPrice')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('dailyPrice')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '0' }"
+                  >This field should be at least 0.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('dailyPrice')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let statusRef = editForm.get('status')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="carrentalApp.car.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'carrentalApp.CarStatus.null' | translate }}</option>
+            @for (carStatus of carStatusValues; track $index) {
+              <option [value]="carStatus">{{ 'carrentalApp.CarStatus.' + carStatus | translate }}</option>
+            }
+          </select>
+          @if (statusRef.invalid && (statusRef.dirty || statusRef.touched)) {
+            <div>
+              @if (editForm.get('status')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="field_categorieses" jhiTranslate="carrentalApp.car.categories">Categories</label>
+          <select
+            class="form-control"
+            id="field_categorieses"
+            data-cy="categories"
+            multiple
+            name="categorieses"
+            formControlName="categorieses"
+            [compareWith]="compareCategory"
+          >
+            @for (categoryOption of categoriesSharedCollection(); track $index) {
+              <option [ngValue]="categoryOption">{{ categoryOption.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving()"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

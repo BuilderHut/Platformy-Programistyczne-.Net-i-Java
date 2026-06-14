@@ -1,0 +1,30 @@
+{
+  "carrentalApp": {
+    "rental": {
+      "home": {
+        "title": "Rentals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Rental",
+        "createOrEditLabel": "Create or edit a Rental",
+        "search": "Search for Rental",
+        "notFound": "No Rentals found"
+      },
+      "created": "A new Rental is created with identifier {{ param }}",
+      "updated": "A Rental is updated with identifier {{ param }}",
+      "deleted": "A Rental is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rental {{ id }}?"
+      },
+      "detail": {
+        "title": "Rental"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "totalPrice": "Total Price",
+      "status": "Status",
+      "car": "Car",
+      "customer": "Customer"
+    }
+  }
+}

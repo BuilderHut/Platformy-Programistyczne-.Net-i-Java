@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (car(); as carRef) {
+      <div>
+        <h2 data-cy="carDetailsHeading"><span jhiTranslate="carrentalApp.car.detail.title">Car</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ carRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.car.brand">Brand</span></dt>
+          <dd>
+            <span>{{ carRef.brand }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.car.model">Model</span></dt>
+          <dd>
+            <span>{{ carRef.model }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.car.productionYear">Production Year</span></dt>
+          <dd>
+            <span>{{ carRef.productionYear }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.car.dailyPrice">Daily Price</span></dt>
+          <dd>
+            <span>{{ carRef.dailyPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.car.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'carrentalApp.CarStatus.' + (carRef.status ?? 'null')">{{
+              { null: '', AVAILABLE: 'AVAILABLE', RENTED: 'RENTED', SERVICE: 'SERVICE' }[carRef.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="carrentalApp.car.categories">Categories</span></dt>
+          <dd>
+            @for (categories of carRef.categorieses; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/category', categories.id, 'view']">{{ categories?.name }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/car', carRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
