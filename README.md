@@ -10,6 +10,7 @@ Każde laboratorium ma własny opis w pliku `README.md`.
 | --- | --- |
 | `Lab0` | FizzBuzz w C# |
 | `Lab1` | Problem plecakowy w C#, GUI Windows Forms i testy |
+| `Lab2` | VIES API, SQLite i Entity Framework Core |
 | `Lab3` | Równoległe mnożenie macierzy w C# |
 | `Lab4` | Blazor Server i ML.NET |
 | `Lab5` | Problem plecakowy w Javie |
